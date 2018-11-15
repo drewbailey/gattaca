@@ -44,6 +44,7 @@ func main() {
 	var authsvc auth.Service
 	{
 		authsvc = auth.NewDefaultService(authrepo)
+		authsvc = auth.NewLoggingMiddleware(logger)(authsvc)
 	}
 
 	var api http.Handler
